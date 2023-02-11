@@ -1,22 +1,29 @@
 (function toggleHandler() {
   window.addEventListener("load", function (event) {
-    const managedTab = document.querySelector(".managed-tab");
-    const hocTab = document.querySelector(".add-hoc-tab");
+    const basePrice = 65;
 
-    const billingButton = document.getElementById("billingButton");
-    const hocButton = document.getElementById("hocButton");
+    const pricePeriod = document.querySelector(".period-toggle-wrapper");
+    const periodSpan = document.querySelector(".period-span");
+    const configPricing = document.querySelector(".config-pricing");
+    let priceVal = (document.querySelector(".price-val").textContent =
+      basePrice);
 
-    hocTab.style.display = "none";
+    function updatePrice() {
+      priceVal.textContent = "55";
+    }
 
-    billingButton.addEventListener("click", () => {
-      hocTab.style.display = "none";
-      managedTab.style.display = "block";
+    pricePeriod.addEventListener("change", (e) => {
+      if (e.target.classList.contains("period-toggle")) {
+        if (e.target.checked) periodSpan.textContent = "year";
+        else periodSpan.textContent = "month";
+      }
     });
 
-    hocButton.addEventListener("click", () => {
-      console.log("clicked");
-      hocTab.style.display = "block";
-      managedTab.style.display = "none";
+    configPricing.addEventListener("change", (e) => {
+      if (e.target.id === "online-support") {
+        console.log("cuw");
+        updatePrice();
+      }
     });
   });
-});
+})();

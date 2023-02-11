@@ -54,14 +54,20 @@
                     Our Pricing
                   </h2>
                 </div>
-                <div class="flex justify-center my-5">
-                  <p  class="mr-2">Yearly</p>
+                <div
+                  class="flex justify-center my-5 price-period period-toggle-wrapper"
+                >
+                  <p class="mr-2">Yearly</p>
                   <label
                     class="relative inline-flex items-center cursor-pointer"
                   >
-                    <input type="checkbox" value="" class="sr-only peer" />
+                    <input
+                      type="checkbox"
+                      value=""
+                      class="sr-only peer period-toggle"
+                    />
                     <div
-                      class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
+                      class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 peer-focus:ring-blue-800 rounded-full peer bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all border-gray-600 peer-checked:bg-blue-600"
                     ></div>
                   </label>
                   <p class="ml-2">Monthly</p>
@@ -69,13 +75,68 @@
 
                 <section class="text-center">
                   <h2
-                    class="text-[#00153B] text-[50px] leading-[63px] font-bold"
+                    class=" text-[#00153B] text-[50px] leading-[63px] font-bold"
                   >
-                    $49
+                    $ <span class="price-val"></span>
                   </h2>
                   <p class="period">
                     /user/<span class="period-span">month</span>
                   </p>
+                </section>
+                <section class="bg-yellow-300 config-pricing p-5 mt-5">
+                  <h3 class="mb-5 text-lg font-medium text-black-900">
+                    Choose type of support required.
+                  </h3>
+                  <ul class="grid w-full gap-6 md:grid-cols-3">
+                    <li>
+                      <input
+                        type="radio"
+                        id="online-support"
+                        name="hosting"
+                        value="hosting-small"
+                        class="hidden peer"
+                        required
+                      />
+                      <label
+                        for="online-support"
+                        class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer hover:text-gray-300 border-gray-700 peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-100 hover:bg-gray-100 text-gray-400 bg-gray-600 hover:bg-gray-700 peer-checked:bg-gray-900"
+                      >
+                        <span class="text-lg font-semibold"
+                          >Onsite Support</span
+                        >
+                      </label>
+                    </li>
+                    <li>
+                      <input
+                        checked
+                        type="radio"
+                        id="remote-support"
+                        name="hosting"
+                        value="remote-support"
+                        class="hidden peer"
+                      />
+                      <label
+                        for="remote-support"
+                        class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer hover:text-gray-300 border-gray-700 peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-100 hover:bg-gray-100 text-gray-400 bg-gray-600 hover:bg-gray-700 peer-checked:bg-gray-900"
+                        ><span class="text-lg font-semibold">Base</span>
+                      </label>
+                    </li>
+                    <li>
+                      <input
+                        type="radio"
+                        id="hosting-big"
+                        name="hosting"
+                        value="hosting-big"
+                        class="hidden peer"
+                      />
+                      <label
+                        for="hosting-big"
+                        class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer hover:text-gray-300 border-gray-700 peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-100 hover:bg-gray-100 text-gray-400 bg-gray-600 hover:bg-gray-700 peer-checked:bg-gray-900"
+                      >
+                        <span class="text-lg font-semibold">Both</span>
+                      </label>
+                    </li>
+                  </ul>
                 </section>
               </div>
             </li>
@@ -120,3 +181,17 @@
     </main>
   </body>
 </html>
+
+<!--<svg-->
+<!--        aria-hidden="true"-->
+<!--        class="w-6 h-6 ml-3"-->
+<!--        fill="currentColor"-->
+<!--        viewBox="0 0 20 20"-->
+<!--        xmlns="http://www.w3.org/2000/svg"-->
+<!--&gt;-->
+<!--  <path-->
+<!--          fill-rule="evenodd"-->
+<!--          d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"-->
+<!--          clip-rule="evenodd"-->
+<!--  ></path>-->
+<!--</svg>-->
