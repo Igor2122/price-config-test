@@ -28,58 +28,95 @@
   </head>
   <body class="h-full py-16 antialiased bg-primary-very-light font-sans">
     <main class="w-9/12 test-red mx-auto">
-      <header class="flex flex-col items-center mb-12">
-        <h2 class="text-3xl text-primary-normal font-bold">Our Pricing</h2>
-        <div class="pt-8 w-3/5 lg:w-1/5 flex justify-around">
-          <p class="text-sm text-gray-500 font-bold mt-2">Annually</p>
-          <div>
-            <label for="toggle" class="relative">
-              <input type="checkbox" name="toggle" id="" class="invisible" />
-              <div
-                class="absolute w-16 h-8 rounded-full shadow-inner inset-y-0"
-                style="
-                  background-image: linear-gradient(
-                    90deg,
-                    #a3a8f0 0%,
-                    #696fdd 100%
-                  );
-                "
-              ></div>
-              <div
-                class="toggle-circle absolute w-6 h-6 bg-white rounded-full shadow inset-y-0 mt-1 ml-1"
-              ></div>
-            </label>
-          </div>
-          <p class="text-sm text-gray-500 font-bold mt-2 ml-16">Monthly</p>
-        </div>
-      </header>
+      <section class="relative">
+        <div class="flex items-center justify-center">
+          <ul class="mx-auto grid max-w-full w-full grid-cols-2 gap-x-5 px-8">
+            <li class="">
+              <input
+                class="peer sr-only"
+                type="radio"
+                value="yes"
+                name="answer"
+                id="yes"
+                checked
+              />
+              <label
+                class="flex justify-center cursor-pointer rounded-md border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-indigo-500 transition-all duration-500 ease-in-out"
+                for="yes"
+                >Managed</label
+              >
 
-      <section
-        class="flex flex-column md:flex-row mx-auto p-4 gap-4 test-orange"
-      >
-        <input checked type="checkbox" id="choose-me" class="peer hidden" />
-        <label
-          for="choose-me"
-          id="managed"
-          class="select-none cursor-pointer rounded-lg border-2 border-gray-200 py-3 px-6 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:bg-gray-200 peer-checked:text-gray-900 peer-checked:border-gray-200"
-        >
-          Check me
-        </label>
-        <div
-          class="basis-full md:basis-1/2 test-red h-24 flex items-center justify-center cursor-pointer"
-        >
-          <h3>Managed</h3>
-        </div>
-        <div
-          class="basis-full md:basis-1/2 test-blue h-24 flex items-center justify-center cursor-pointer"
-        >
-          <h3>Ad-hoc</h3>
+              <div
+                class="absolute w-full bg-white shadow-lg left-0 p-6 border mt-2 border-indigo-300 rounded-lg mx-auto transition-all duration-500 ease-in-out translate-x-40 opacity-0 invisible peer-checked:opacity-100 peer-checked:visible peer-checked:translate-x-1"
+              >
+                <div class="flex flex-col items-center mb-12">
+                  <h2 class="text-3xl text-primary-normal font-bold">
+                    Our Pricing
+                  </h2>
+                </div>
+                <div class="flex justify-center my-5">
+                  <p  class="mr-2">Yearly</p>
+                  <label
+                    class="relative inline-flex items-center cursor-pointer"
+                  >
+                    <input type="checkbox" value="" class="sr-only peer" />
+                    <div
+                      class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
+                    ></div>
+                  </label>
+                  <p class="ml-2">Monthly</p>
+                </div>
+
+                <section class="text-center">
+                  <h2
+                    class="text-[#00153B] text-[50px] leading-[63px] font-bold"
+                  >
+                    $49
+                  </h2>
+                  <p class="period">
+                    /user/<span class="period-span">month</span>
+                  </p>
+                </section>
+              </div>
+            </li>
+
+            <li class="">
+              <input
+                class="peer sr-only"
+                type="radio"
+                value="no"
+                name="answer"
+                id="no"
+              />
+              <label
+                class="flex justify-center cursor-pointer rounded-md border border-gray-300 bg-white py-2 px-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-indigo-500 transition-all duration-500 ease-in-out"
+                for="no"
+                >Ad-hoc</label
+              >
+
+              <div
+                class="absolute bg-white shadow-lg left-0 p-6 border mt-2 border-indigo-300 rounded-lg mx-auto transition-all duration-500 ease-in-out translate-x-40 opacity-0 invisible peer-checked:opacity-100 peer-checked:visible peer-checked:translate-x-1"
+              >
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Perspiciatis, voluptatum! Sequi consequatur error nulla quaerat
+                rem fugit provident tempore nihil a aspernatur ad laboriosam,
+                dolor nisi qui? Esse, mollitia? Nostrum? Lorem ipsum dolor sit
+                amet consectetur adipisicing elit. Perspiciatis, voluptatum!
+                Sequi consequatur error nulla quaerat rem fugit provident
+                tempore nihil a aspernatur ad laboriosam, dolor nisi qui? Esse,
+                mollitia? Nostrum? Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Perspiciatis, voluptatum! Sequi consequatur
+                error nulla quaerat rem fugit provident tempore nihil a
+                aspernatur ad laboriosam, dolor nisi qui? Esse, mollitia?
+                Nostrum? Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Perspiciatis, voluptatum! Sequi consequatur error nulla
+                quaerat rem fugit provident tempore nihil a aspernatur ad
+                laboriosam, dolor nisi qui? Esse, mollitia? Nostrum?
+              </div>
+            </li>
+          </ul>
         </div>
       </section>
-      <div>
-        <div class="managed-tab">managed tag</div>
-        <div class="add-hoc-tab">add-hoc tag</div>
-      </div>
     </main>
   </body>
 </html>
