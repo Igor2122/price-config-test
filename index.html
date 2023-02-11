@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="stylesheet" href="/build/tailwind.css" />
+    <script src="js/main.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      .test-red {
+        border: 1px dashed red;
+      }
+      .test-blue {
+        border: 1px dashed blue;
+      }
+
+      .test-orange {
+        border: 1px dashed orange;
+      }
+    </style>
+    <title>Welcome to Tailwind!</title>
+  </head>
+  <body class="h-full py-16 antialiased bg-primary-very-light font-sans">
+    <main class="w-9/12 test-red mx-auto">
+      <header class="flex flex-col items-center mb-12">
+        <h2 class="text-3xl text-primary-normal font-bold">Our Pricing</h2>
+        <div class="pt-8 w-3/5 lg:w-1/5 flex justify-around">
+          <p class="text-sm text-gray-500 font-bold mt-2">Annually</p>
+          <div>
+            <label for="toggle" class="relative">
+              <input type="checkbox" name="toggle" id="" class="invisible" />
+              <div
+                class="absolute w-16 h-8 rounded-full shadow-inner inset-y-0"
+                style="
+                  background-image: linear-gradient(
+                    90deg,
+                    #a3a8f0 0%,
+                    #696fdd 100%
+                  );
+                "
+              ></div>
+              <div
+                class="toggle-circle absolute w-6 h-6 bg-white rounded-full shadow inset-y-0 mt-1 ml-1"
+              ></div>
+            </label>
+          </div>
+          <p class="text-sm text-gray-500 font-bold mt-2 ml-16">Monthly</p>
+        </div>
+      </header>
+
+      <section
+        class="flex flex-column md:flex-row mx-auto p-4 gap-4 test-orange"
+      >
+        <input checked type="checkbox" id="choose-me" class="peer hidden" />
+        <label
+          for="choose-me"
+          id="managed"
+          class="select-none cursor-pointer rounded-lg border-2 border-gray-200 py-3 px-6 font-bold text-gray-200 transition-colors duration-200 ease-in-out peer-checked:bg-gray-200 peer-checked:text-gray-900 peer-checked:border-gray-200"
+        >
+          Check me
+        </label>
+        <div
+          class="basis-full md:basis-1/2 test-red h-24 flex items-center justify-center cursor-pointer"
+        >
+          <h3>Managed</h3>
+        </div>
+        <div
+          class="basis-full md:basis-1/2 test-blue h-24 flex items-center justify-center cursor-pointer"
+        >
+          <h3>Ad-hoc</h3>
+        </div>
+      </section>
+      <div>
+        <div class="managed-tab">managed tag</div>
+        <div class="add-hoc-tab">add-hoc tag</div>
+      </div>
+    </main>
+  </body>
+</html>
