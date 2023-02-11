@@ -30,7 +30,6 @@
     }
 
     function updatePrice(val) {
-      console.log(val, ": ===:val");
       priceVal.textContent = val;
     }
 
@@ -48,6 +47,7 @@
 
     configPricing.addEventListener("change", (e) => {
       updatePrice(e.target.value);
+      console.log(e.target.name, ": ===:e.target.name")
     });
   });
 })();
