@@ -1,20 +1,41 @@
 (function toggleHandler() {
   window.addEventListener("load", function () {
-    const basePrice = 65;
+    function addPercentage(number, percentage) {
+      if (!percentage) return 0;
 
-    const priceMap = {
-      "online-support": 0.05,
-      "remote-support": 1,
-      "both-support": 0.08,
-      numberOfUsers: {
-        base: 1,
-        hundredPlus: 0.95,
+      return Math.floor(number * (percentage / 100));
+    }
+
+    function removePercentage(number, percentage) {
+      console.log(percentage, ": ===:percentage");
+      if (!percentage) return number;
+
+      return Math.floor(number * (percentage / 100));
+    }
+
+    const basePrice = 100;
+
+    const pricesMap = {
+      "support-type": {
+        "onsite-support": 5,
+        "remote-support": null,
+        "both-support": 8,
       },
-      responseTime: {
-        base: 1,
-        oneDay: 0.5,
-        eightHours: 1,
-        asap: 1.5,
+      "number-of-users": {
+        "one-oneHundred": 1,
+        "hundred-plus": 5,
+        "thousand-plus": 5,
+      },
+      support: {
+        "support-8-5": 1,
+        "support-24-5": 1,
+        "support-24-7": 1,
+      },
+      "respond-time": {
+        "3-5-days": 1,
+        "24-hours": 1,
+        "8-hours": 1,
+        asap: 1,
       },
     };
 
@@ -26,7 +47,36 @@
     priceVal.textContent = basePrice;
 
     function generatePrice(val) {
-      priceMap[val]
+      let supportPercentSelected = "remote-support";
+
+      const radioButtons = document.querySelectorAll(
+        'input[name="support-type"]'
+      );
+
+      radioButtons.forEach((radioButton) => {
+        if (radioButton.checked) {
+          supportPercentSelected = radioButton.value;
+        }
+      });
+
+      let supportPrice = addPercentage(
+        basePrice,
+        pricesMap["support-type"][supportPercentSelected]
+      );
+
+      console.log(supportPercentSelected, ": ===:supportPercentSelected");
+
+      console.log(supportPrice, ": ===:supportPrice");
+
+      // if (selectedRadio) {
+      //   console.log("A radio button is selected:", selectedRadio.value);
+      // } else {
+      //   console.log("No radio button is selected");
+      // }
+
+      let total = basePrice + supportPrice;
+
+      updatePrice(total);
     }
 
     function updatePrice(val) {
@@ -46,8 +96,10 @@
     });
 
     configPricing.addEventListener("change", (e) => {
-      updatePrice(e.target.value);
-      console.log(e.target.name, ": ===:e.target.name")
+      // console.log(e.target.name, ": ===:e.target.name");
+      // console.log(e.target.value, ": ===:e.target.value");
+
+      generatePrice(e.target.value);
     });
   });
 })();
