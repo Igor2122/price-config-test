@@ -6,11 +6,15 @@
       return Math.floor(number * (percentage / 100));
     }
 
-    function removePercentage(number, percentage) {
-      console.log(percentage, ": ===:percentage");
-      if (!percentage) return number;
+    function getSelectedCheckbox(radioButtons) {
+      let selectedRadioButton = "";
+      radioButtons.forEach((radioButton) => {
+        if (radioButton.checked) {
+          return (selectedRadioButton = radioButton.value);
+        }
+      });
 
-      return Math.floor(number * (percentage / 100));
+      return selectedRadioButton;
     }
 
     const basePrice = 100;
@@ -22,20 +26,20 @@
         "both-support": 8,
       },
       "number-of-users": {
-        "one-oneHundred": 1,
+        "one-oneHundred": null,
         "hundred-plus": 5,
-        "thousand-plus": 5,
+        "thousand-plus": 8,
       },
       support: {
-        "support-8-5": 1,
-        "support-24-5": 1,
-        "support-24-7": 1,
+        "support-8-5": null,
+        "support-24-5": 50,
+        "support-24-7": 100,
       },
       "respond-time": {
-        "3-5-days": 1,
-        "24-hours": 1,
-        "8-hours": 1,
-        asap: 1,
+        "3-5-days": null,
+        "24-hours": 50,
+        "8-hours": 100,
+        asap: 150,
       },
     };
 
@@ -47,34 +51,54 @@
     priceVal.textContent = basePrice;
 
     function generatePrice(val) {
-      let supportPercentSelected = "remote-support";
-
-      const radioButtons = document.querySelectorAll(
-        'input[name="support-type"]'
+      const supportTypePercent = getSelectedCheckbox(
+        document.querySelectorAll('input[name="support-type"]') ||
+          "remote-support"
       );
 
-      radioButtons.forEach((radioButton) => {
-        if (radioButton.checked) {
-          supportPercentSelected = radioButton.value;
-        }
-      });
+      const usersPercentSelected =
+        getSelectedCheckbox(
+          document.querySelectorAll('input[name="number-of-users"]')
+        ) || "one-oneHundred";
 
-      let supportPrice = addPercentage(
+      const supportPercentSelected =
+        getSelectedCheckbox(
+          document.querySelectorAll('input[name="support"]')
+        ) || "support-8-5";
+
+      const responsePercentSelected =
+        getSelectedCheckbox(
+          document.querySelectorAll('input[name="respond-time"]')
+        ) || "3-5-days";
+
+      let supportTypePrice = addPercentage(
         basePrice,
-        pricesMap["support-type"][supportPercentSelected]
+        pricesMap["support-type"][supportTypePercent]
       );
 
-      console.log(supportPercentSelected, ": ===:supportPercentSelected");
+      let usersPrice = addPercentage(
+        basePrice + supportTypePrice,
+        pricesMap["number-of-users"][usersPercentSelected]
+      );
 
-      console.log(supportPrice, ": ===:supportPrice");
+      let supportHoursPrice = addPercentage(
+        basePrice + supportTypePrice + usersPrice,
+        pricesMap["support"][supportPercentSelected]
+      );
 
-      // if (selectedRadio) {
-      //   console.log("A radio button is selected:", selectedRadio.value);
-      // } else {
-      //   console.log("No radio button is selected");
-      // }
+      let responsePercentPrice = addPercentage(
+        basePrice + supportTypePrice + usersPrice + supportHoursPrice,
+        pricesMap["respond-time"][responsePercentSelected]
+      );
 
-      let total = basePrice + supportPrice;
+      console.log(usersPrice, ": ===:usersPrice");
+
+      let total =
+        basePrice +
+        supportTypePrice -
+        usersPrice +
+        supportHoursPrice +
+        responsePercentPrice;
 
       updatePrice(total);
     }
@@ -96,9 +120,6 @@
     });
 
     configPricing.addEventListener("change", (e) => {
-      // console.log(e.target.name, ": ===:e.target.name");
-      // console.log(e.target.value, ": ===:e.target.value");
-
       generatePrice(e.target.value);
     });
   });
