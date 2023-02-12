@@ -108,14 +108,13 @@
     }
 
     pricePeriod.addEventListener("change", (e) => {
-      if (e.target.classList.contains("period-toggle")) {
-        if (e.target.checked) {
-          periodSpan.textContent = "year";
-          updatePrice(45);
-        } else {
-          updatePrice(85);
-          periodSpan.textContent = "month";
-        }
+      if (e.target.value === "monthly-price") {
+        periodSpan.textContent = "month";
+        updatePrice(85);
+      }
+      if (e.target.value === "yearly-price") {
+        updatePrice(45);
+        periodSpan.textContent = "year";
       }
     });
 
