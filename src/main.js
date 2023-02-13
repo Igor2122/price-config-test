@@ -1,24 +1,5 @@
 (function toggleHandler() {
   window.addEventListener("load", function () {
-    function addPercentage(number, percentage) {
-      if (!percentage) return 0;
-
-      return Math.floor(number * (percentage / 100));
-    }
-
-    function getSelectedCheckbox(radioButtons) {
-      let selectedRadioButton = "";
-      radioButtons.forEach((radioButton) => {
-        if (radioButton.checked) {
-          return (selectedRadioButton = radioButton.value);
-        }
-      });
-
-      return selectedRadioButton;
-    }
-
-    const basePrice = 100;
-
     const pricesMap = {
       "support-type": {
         "onsite-support": 5,
@@ -43,14 +24,47 @@
       },
     };
 
+    function addPercentage(number, percentage) {
+      if (!percentage) return 0;
+
+      return Math.floor(number * (percentage / 100));
+    }
+
+    function getSelectedCheckbox(radioButtons) {
+      let selectedRadioButton = "";
+      radioButtons.forEach((radioButton) => {
+        if (radioButton.checked) {
+          return (selectedRadioButton = radioButton.value);
+        }
+      });
+
+      return selectedRadioButton;
+    }
+
     const pricePeriod = document.querySelector(".period-toggle-wrapper");
     const periodSpan = document.querySelector(".period-span");
     const configPricing = document.querySelector(".config-pricing");
-    let priceVal = document.querySelector(".price-val");
-
-    priceVal.textContent = basePrice;
+    const priceVal = document.querySelector(".price-val");
 
     function generatePrice(val) {
+      const state = {
+        periodText: {
+          "monthly-price": "month",
+          "yearly-price": "year",
+        },
+        priceBase: {
+          "monthly-price": 100,
+          "yearly-price": 200,
+        },
+      };
+
+      const basePricingSelected = getSelectedCheckbox(
+        document.querySelectorAll('input[name="monthly-price"]')
+      );
+
+      periodSpan.textContent = state.periodText[basePricingSelected];
+      const basePrice = state.priceBase[basePricingSelected];
+
       const supportTypePercent = getSelectedCheckbox(
         document.querySelectorAll('input[name="support-type"]') ||
           "remote-support"
@@ -91,8 +105,6 @@
         pricesMap["respond-time"][responsePercentSelected]
       );
 
-      console.log(usersPrice, ": ===:usersPrice");
-
       let total =
         basePrice +
         supportTypePrice -
@@ -108,18 +120,13 @@
     }
 
     pricePeriod.addEventListener("change", (e) => {
-      if (e.target.value === "monthly-price") {
-        periodSpan.textContent = "month";
-        updatePrice(85);
-      }
-      if (e.target.value === "yearly-price") {
-        updatePrice(45);
-        periodSpan.textContent = "year";
-      }
+      generatePrice(e.target.value);
     });
 
     configPricing.addEventListener("change", (e) => {
       generatePrice(e.target.value);
     });
+
+    generatePrice();
   });
 })();
